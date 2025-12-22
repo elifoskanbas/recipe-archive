@@ -153,49 +153,9 @@ def show_settings(parent_frame, language, on_language_change=None):
         justify="left"
     ).pack(anchor="w")
     
-    # Tema ayarları kartı
-    theme_card = ctk.CTkFrame(container, corner_radius=15)
-    theme_card.pack(fill="x", pady=15)
+   
     
-    theme_inner = ctk.CTkFrame(theme_card, fg_color="transparent")
-    theme_inner.pack(fill="x", padx=30, pady=30)
     
-    theme_title = ctk.CTkLabel(
-        theme_inner,
-        text="🎨 " + ("Tema" if current_lang == "tr" else "Theme"),
-        font=ctk.CTkFont(size=20, weight="bold")
-    )
-    theme_title.pack(anchor="w", pady=(0, 10))
     
-    theme_desc = ctk.CTkLabel(
-        theme_inner,
-        text=("Açık veya koyu tema seçin" if current_lang == "tr"
-              else "Select light or dark theme"),
-        font=ctk.CTkFont(size=13),
-        text_color="gray60"
-    )
-    theme_desc.pack(anchor="w", pady=(0, 20))
     
-    def change_theme():
-        current_mode = ctk.get_appearance_mode()
-        if current_mode == "Light":
-            ctk.set_appearance_mode("dark")
-            theme_button.configure(text="☀️ " + ("Açık Tema" if current_lang == "tr" else "Light Theme"))
-        else:
-            ctk.set_appearance_mode("light")
-            theme_button.configure(text="🌙 " + ("Koyu Tema" if current_lang == "tr" else "Dark Theme"))
     
-    current_mode = ctk.get_appearance_mode()
-    button_text = ("🌙 Koyu Tema" if current_mode == "Light" else "☀️ Açık Tema") if current_lang == "tr" else (
-        "🌙 Dark Theme" if current_mode == "Light" else "☀️ Light Theme"
-    )
-    
-    theme_button = ctk.CTkButton(
-        theme_inner,
-        text=button_text,
-        command=change_theme,
-        font=ctk.CTkFont(size=14),
-        height=40,
-        corner_radius=10
-    )
-    theme_button.pack(anchor="w")

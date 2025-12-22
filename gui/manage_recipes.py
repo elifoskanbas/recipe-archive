@@ -74,7 +74,7 @@ def apply_filter(list_frame, category, parent_frame, language):
 def show_manage_recipe_screen(parent_frame, language):
     lang = language
 
-    # 🔴 EN ÖNEMLİ SATIR
+    
     for widget in parent_frame.winfo_children():
         widget.destroy()
 

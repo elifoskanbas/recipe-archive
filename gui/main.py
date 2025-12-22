@@ -68,9 +68,9 @@ class CookBookApp:
         
         # Menü öğeleri
         menu_items = [
-            ("🏠 Dashboard", "Dashboard"),
-            ("➕ " + ("Tarif Ekle" if self.current_lang == "tr" else "Add Recipe"), "Add Recipe"),
-            ("📋 " + ("Tarifleri Yönet" if self.current_lang == "tr" else "Manage Recipes"), "Manage Recipes"),
+            ("Dashboard", "Dashboard"),
+            (("Tarif Ekle" if self.current_lang == "tr" else "Add Recipe"), "Add Recipe"),
+            (("Tarifleri Yönet" if self.current_lang == "tr" else "Manage Recipes"), "Manage Recipes"),
             ("⚙️ " + ("Ayarlar" if self.current_lang == "tr" else "Settings"), "Settings")
         ]
         

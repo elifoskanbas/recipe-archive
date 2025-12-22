@@ -3,11 +3,11 @@ import customtkinter as ctk
 THEMES = {
     "light": {
         "mode": "light",
-        "accent": "#3B82F6"
+        "accent": "#f4CCCC"
     },
     "dark": {
         "mode": "dark",
-        "accent": "#3B82F6"
+        "accent": "#A64D79"
     }
 }
 
