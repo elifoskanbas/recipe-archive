@@ -91,10 +91,24 @@ def show_add_recipe_screen(parent_frame, language):
 
     # ---------- SAVE ----------
     def save_recipe():
+        name = name_entry.get().strip()
+
+   
+        if not name:
+            messagebox.showwarning(
+                texts[lang].get("warning_title", "Warning"),
+                texts[lang].get(
+                    "empty_title_warning",
+                    "Please enter a recipe title."
+                )
+            )
+            name_entry.focus()
+            return
+
         cooking_time = hours_var.get() * 60 + minutes_var.get()
 
         database.add_recipe(
-            name_entry.get(),
+            name,
             category_combo.get(),
             collection_combo.get(),
             ingredients_text.get("1.0", "end").strip(),
@@ -108,6 +122,17 @@ def show_add_recipe_screen(parent_frame, language):
             texts[lang]["saved_message_title"],
             texts[lang]["saved_message_text"]
         )
+
+  
+        name_entry.delete(0, "end")
+        ingredients_text.delete("1.0", "end")
+        directions_text.delete("1.0", "end")
+        portion_var.set(1)
+        hours_var.set(0)
+        minutes_var.set(30)
+
+        name_entry.focus()
+
 
     ctk.CTkButton(
         container,

@@ -51,16 +51,17 @@ def show_dashboard(parent_frame, language):
         total_recipes
     ).pack(side="left", padx=10)
 
+    category_count = database.get_category_count()
     stat_card(
         stats_row,
         texts[lang]["categories"],
-        texts[lang]["soon"]
+        category_count
     ).pack(side="left", padx=10)
 
     # Recent
     ctk.CTkLabel(
         container,
-        text="Recently Added",
+        text=texts[lang]["recently_added"],
         font=ctk.CTkFont(size=18, weight="bold")
     ).pack(anchor="w", pady=(0, 10))
 

@@ -50,6 +50,19 @@ def add_recipe(name, category, collection, ingredients, instructions, cooking_ti
         return False, "A database error occurred."
     finally:
         conn.close()
+        
+def get_category_count():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT COUNT(DISTINCT category)
+        FROM Recipes
+        WHERE category IS NOT NULL AND category != ''
+    """)
+    count = cursor.fetchone()[0]
+    conn.close()
+    return count
+
 
 
 def get_recipe_names():

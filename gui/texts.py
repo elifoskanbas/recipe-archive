@@ -2,12 +2,13 @@
 
 texts = {
     "en": {
-        "app_title": "Recipe Keeper",
-        "menu_dashboard": "Dashboard",
+        "app_title": "CookBook",
+        "menu_dashboard": "Home",
         "menu_add_recipe": "Add Recipe",
         "menu_manage_recipes": "Manage Recipes",
         "edit_recipe_title": "Edit Recipe",
         "menu_settings": "Settings",
+        "recently_added":"Recently Added",
         "theme_label": "Theme",
         "dashboard_greeting": "All your recipes in one place",
         "save_btn": "Save",
@@ -44,12 +45,14 @@ texts = {
     },
     "tr": {
         "app_title": "Tarif Defteri",
-        "menu_dashboard": "Kontrol Paneli",
-        "menu_add_recipe": "Tarif Ekle",
-        "menu_manage_recipes": "Tarifleri Yönet",
         "edit_recipe_title": "Tarifi Düzenle",
         "theme_label": "Tema",
+        "menu_dashboard": "Ana Sayfa",
+        "menu_add_recipe": "Tarif Ekle",
+        "menu_manage_recipes": "Tarifleri Yönet",
+        "menu_settings": "⚙️ Ayarlar",
         "menu_settings": "Ayarlar",
+        "recently_added":"Son Eklenenler",
         "dashboard_greeting": "Tüm tarifleriniz tek bir yerde",
         "save_btn": "Kaydet",
         "soon":"Yakında",
