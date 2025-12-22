@@ -2,16 +2,25 @@
 
 texts = {
     "en": {
-        "app_title": "Recipe Keeper",
-        "menu_dashboard": "Dashboard",
+        "app_title": "CookBook",
+        "menu_dashboard": "Home",
         "menu_add_recipe": "Add Recipe",
         "menu_manage_recipes": "Manage Recipes",
+        "edit_recipe_title": "Edit Recipe",
         "menu_settings": "Settings",
+        "recently_added":"Recently Added",
+        "theme_label": "Dark Mode",
         "dashboard_greeting": "All your recipes in one place",
         "save_btn": "Save",
+        "categories": "Categories",
         "cancel_btn": "Cancel",
+        "soon": "Soon",
         "language_label": "Language",
         "info_language_set": "Language set to {}",
+        "settings_title": "Settings",
+        "language_label": "Language",
+        "save_btn": "Save",
+
         #--
         "new_recipe_title": "New Recipe",
         "name_label": "Title:",
@@ -20,6 +29,7 @@ texts = {
         "portion_label": "Portion:",
         "cooking_time_label": "Cooking Time:",
         "ingredients_label": "Ingredients:",
+        "total_recipes": "Total Recipes",
         "directions_label": "Directions:",
         "save_button": "Save Recipe",
         "saved_message_title": "Saved",
@@ -35,13 +45,24 @@ texts = {
     },
     "tr": {
         "app_title": "Tarif Defteri",
-        "menu_dashboard": "Kontrol Paneli",
+        "edit_recipe_title": "Tarifi Düzenle",
+        "theme_label": "Gece Modu",
+        "menu_dashboard": "Ana Sayfa",
         "menu_add_recipe": "Tarif Ekle",
         "menu_manage_recipes": "Tarifleri Yönet",
+        "menu_settings": "⚙️ Ayarlar",
         "menu_settings": "Ayarlar",
+        "recently_added":"Son Eklenenler",
         "dashboard_greeting": "Tüm tarifleriniz tek bir yerde",
         "save_btn": "Kaydet",
+        "soon":"Yakında",
+        "categories": "Kategoriler",
         "cancel_btn": "İptal",
+        "settings_title": "Ayarlar",
+        "language_label": "Dil",
+        "total_recipes": "Toplam Tarif",
+        "save_btn": "Kaydet",
+
         "language_label": "Dil",
         "info_language_set": "Dil {} olarak ayarlandı",
         #--
@@ -59,8 +80,8 @@ texts = {
         #---
         "manage_recipes_title": "Tarifleriniz",
         "category_label": "Kategori:",
-        "edit_icon": "✎𓂃",
-        "delete_icon": "🗑️",
+        "edit_icon": "✏️",
+        "delete_icon": "✕",
         #--
         "language_label": "Dil",
         "save_btn": "Kaydet"
