@@ -14,9 +14,9 @@ import database
 # -----------------------------
 THEME = {
     "light": {
-        "sidebar": "#111827",   # dark gray
-        "button": "#1f2937",
-        "hover": "#374151",
+        "sidebar": "#741b47",   # dark gray
+        "button": "#3b0e24",
+        "hover": "#5c1739",
         "text": "#f9fafb",
     },
     "dark": {
@@ -126,10 +126,10 @@ class CookBookApp:
         ).pack(fill="x", padx=18, pady=20)
 
         # Theme toggle
-        theme_text = "🌓 Tema" if self.current_lang == "tr" else "🌓 Theme"
+       
         ctk.CTkButton(
             self.sidebar_frame,
-            text=theme_text,
+            text=texts[self.current_lang]["theme_label"],
             command=self.toggle_theme,
             height=42,
             corner_radius=10,

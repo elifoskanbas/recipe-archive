@@ -9,7 +9,7 @@ texts = {
         "edit_recipe_title": "Edit Recipe",
         "menu_settings": "Settings",
         "recently_added":"Recently Added",
-        "theme_label": "Theme",
+        "theme_label": "Dark Mode",
         "dashboard_greeting": "All your recipes in one place",
         "save_btn": "Save",
         "categories": "Categories",
@@ -46,7 +46,7 @@ texts = {
     "tr": {
         "app_title": "Tarif Defteri",
         "edit_recipe_title": "Tarifi Düzenle",
-        "theme_label": "Tema",
+        "theme_label": "Gece Modu",
         "menu_dashboard": "Ana Sayfa",
         "menu_add_recipe": "Tarif Ekle",
         "menu_manage_recipes": "Tarifleri Yönet",
@@ -80,8 +80,8 @@ texts = {
         #---
         "manage_recipes_title": "Tarifleriniz",
         "category_label": "Kategori:",
-        "edit_icon": "✎𓂃",
-        "delete_icon": "🗑️",
+        "edit_icon": "✏️",
+        "delete_icon": "✕",
         #--
         "language_label": "Dil",
         "save_btn": "Kaydet"
