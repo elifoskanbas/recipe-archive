@@ -59,7 +59,7 @@ def show_settings(parent_frame, language, on_language_change=None):
     # Dil başlığı
     language_title = ctk.CTkLabel(
         lang_inner,
-        text="🌐 " + texts[current_lang]["language_label"],
+        text=texts[current_lang]["language_label"],
         font=ctk.CTkFont(size=20, weight="bold")
     )
     language_title.pack(anchor="w", pady=(0, 10))
@@ -123,38 +123,17 @@ def show_settings(parent_frame, language, on_language_change=None):
     
     save_button = ctk.CTkButton(
         button_frame,
-        text="💾 " + texts[current_lang]["save_btn"],
+        text=texts[current_lang]["save_btn"],
         command=save_and_reload,
         font=ctk.CTkFont(size=16, weight="bold"),
         height=45,
         corner_radius=10,
-        fg_color="#27ae60",
-        hover_color="#229954"
+        fg_color="#d5a6bd",
+        hover_color="#a64d79"
     )
     save_button.pack(side="left", padx=5)
     
-    # Bilgi kutusu
-    info_card = ctk.CTkFrame(container, corner_radius=15, fg_color=("#e8f4f8", "#1a3a4a"))
-    info_card.pack(fill="x", pady=(30, 0))
-    
-    info_inner = ctk.CTkFrame(info_card, fg_color="transparent")
-    info_inner.pack(padx=25, pady=20)
-    
-    info_text = (
-        "ℹ️ Dil değişikliği tüm uygulamayı etkiler.\nDeğişiklikler hemen uygulanacaktır." 
-        if current_lang == "tr" else
-        "ℹ️ Language change affects the entire application.\nChanges will be applied immediately."
-    )
-    
-    ctk.CTkLabel(
-        info_inner,
-        text=info_text,
-        font=ctk.CTkFont(size=13),
-        justify="left"
-    ).pack(anchor="w")
-    
    
-    
     
     
     
