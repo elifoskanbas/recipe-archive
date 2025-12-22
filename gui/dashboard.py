@@ -45,8 +45,17 @@ def show_dashboard(parent_frame, language):
 
     total_recipes = database.get_total_recipe_count()
 
-    stat_card(stats_row, "Total Recipes", total_recipes).pack(side="left", padx=10)
-    stat_card(stats_row, "Categories", "Soon").pack(side="left", padx=10)
+    stat_card(
+        stats_row,
+        texts[lang]["total_recipes"],
+        total_recipes
+    ).pack(side="left", padx=10)
+
+    stat_card(
+        stats_row,
+        texts[lang]["categories"],
+        texts[lang]["soon"]
+    ).pack(side="left", padx=10)
 
     # Recent
     ctk.CTkLabel(
