@@ -98,15 +98,23 @@ def show_recipe_screen(parent_frame, recipe_name, language="en"):
 
     ctk.CTkButton(
         actions,
-        text="← Back",
+        text=texts[lang]["back_btn"],
         width=120,
+        corner_radius=12,
+        fg_color="#FF8C00",     
+        hover_color="#FF7000",   
+        text_color="white",
         command=lambda: manage_recipes.show_manage_recipe_screen(parent_frame, lang)
     ).pack(side="left")
 
     ctk.CTkButton(
         actions,
-        text="Edit",
+        text=texts[lang]["edit_btn"],
         width=120,
+        corner_radius=12,
+        fg_color="#FF8C00",     
+        hover_color="#FF7000",   
+        text_color="white",
         command=lambda: edit_recipe.show_edit_recipe_screen(parent_frame, name, lang)
     ).pack(side="right")
 
