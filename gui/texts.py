@@ -20,6 +20,8 @@ texts = {
         "settings_title": "Settings",
         "language_label": "Language",
         "save_btn": "Save",
+        "edit_btn": "Edit",
+        "back_btn": "Back",
         #--
         # --- Categories list ---
         "category_items": [
@@ -70,6 +72,8 @@ texts = {
         "language_label": "Dil",
         "total_recipes": "Toplam Tarif",
         "save_btn": "Kaydet",
+        "edit_btn": "Düzenle",
+        "back_btn": "Geri",
         #--
         # --- Kategori listesi ---
         "category_items": [
