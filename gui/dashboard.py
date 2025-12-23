@@ -72,6 +72,9 @@ def show_dashboard(parent_frame, language):
             height=40,
             corner_radius=10,
             anchor="w",
+            fg_color="#FF8C00",
+            hover_color="#FF7000",
+            text_color="white", 
             command=lambda r=recipe:
                 recipe_detail.show_recipe_screen(parent_frame, r, lang)
         ).pack(fill="x", pady=6)

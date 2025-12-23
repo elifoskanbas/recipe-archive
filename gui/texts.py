@@ -20,6 +20,14 @@ texts = {
         "settings_title": "Settings",
         "language_label": "Language",
         "save_btn": "Save",
+        #--
+        # --- Categories list ---
+        "category_items": [
+            "Barbecue", "Beef", "Bread", "Cake", "Casserole", "Chicken",
+            "Chocolate", "Cookie", "Egg", "Fish", "Lamb", "Muffin",
+            "Noodle", "Pasta", "Pie", "Pork", "Rice", "Salad",
+            "Sandwich", "Sauce", "Soup", "Tart", "Vegetable", "Vegetarian"
+        ],
 
         #--
         "new_recipe_title": "New Recipe",
@@ -62,6 +70,15 @@ texts = {
         "language_label": "Dil",
         "total_recipes": "Toplam Tarif",
         "save_btn": "Kaydet",
+        #--
+        # --- Kategori listesi ---
+        "category_items": [
+            "Barbekü", "Dana Eti", "Ekmek", "Kek", "Güveç", "Tavuk",
+            "Çikolata", "Kurabiye", "Yumurta", "Balık", "Kuzu Eti", "Muffin",
+            "Erişte", "Makarna", "Turta", "Domuz Eti", "Pirinç", "Salata",
+            "Sandviç", "Sos", "Çorba", "Tart", "Sebze", "Vejetaryen"
+        ],
+        
 
         "language_label": "Dil",
         "info_language_set": "Dil {} olarak ayarlandı",

@@ -89,14 +89,7 @@ def show_manage_recipe_screen(parent_frame, language):
     ).pack(anchor="w", pady=(0, 20))
 
     # Category filter
-    categories = list(set(
-        database.get_recipe_category() + [
-            "", "Barbecue","Beef","Bread","Cake","Casserole","Chicken",
-            "Chocolate","Cookie","Egg","Fish","Lamb","Muffin",
-            "Noodle","Pasta","Pie","Pork","Rice","Salad",
-            "Sandwich","Sauce","Soup","Tart","Vegetable","Vegetarian"
-        ]
-    ))
+    categories = texts[lang]["category_items"]
 
     ctk.CTkLabel(
         container,

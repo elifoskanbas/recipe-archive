@@ -127,9 +127,10 @@ def show_settings(parent_frame, language, on_language_change=None):
         command=save_and_reload,
         font=ctk.CTkFont(size=16, weight="bold"),
         height=45,
-        corner_radius=10,
-        fg_color="#d5a6bd",
-        hover_color="#a64d79"
+        corner_radius=12,
+        fg_color="#FF8C00",     
+        hover_color="#FF7000",   
+        text_color="white",
     )
     save_button.pack(side="left", padx=5)
     

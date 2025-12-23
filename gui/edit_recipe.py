@@ -52,11 +52,19 @@ def show_edit_recipe_screen(parent_frame, recipe_name, language="en"):
     name_entry.insert(0, old_name)
     name_entry.pack(padx=15, pady=(0, 10))
 
-    categories = list(set(database.get_recipe_category()))
-    ctk.CTkLabel(left, text=texts[lang]["category_label"]).pack(anchor="w", padx=15, pady=(10, 5))
+    
+    categories = texts[lang]["category_items"]
+    current_category_en = database.get_current_recipe_category(old_name)
+    current_category_display = database.category_for_ui(current_category_en, lang)
+    
+    ctk.CTkLabel(
+        left,
+        text=texts[lang]["category_label"]
+        ).pack(anchor="w", padx=15, pady=(10, 5))
     category_combo = ctk.CTkComboBox(left, values=categories)
-    category_combo.set(category)
+    category_combo.set(current_category_display)
     category_combo.pack(padx=15, pady=(0, 10))
+
 
     collections = list(set(database.get_recipe_collection()))
     ctk.CTkLabel(left, text=texts[lang]["collection_label"]).pack(anchor="w", padx=15, pady=(10, 5))
@@ -134,6 +142,9 @@ def show_edit_recipe_screen(parent_frame, recipe_name, language="en"):
         text=texts[lang]["save_button"],
         height=44,
         corner_radius=12,
+        fg_color="#FF8C00",     
+        hover_color="#FF7000",   
+        text_color="white",
         command=save_changes
     )
     save_btn.grid(row=2, column=2, sticky="e", pady=20)

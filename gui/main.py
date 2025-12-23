@@ -14,16 +14,18 @@ import database
 # -----------------------------
 THEME = {
     "light": {
-        "sidebar": "#741b47",   # dark gray
-        "button": "#3b0e24",
-        "hover": "#5c1739",
-        "text": "#f9fafb",
+        "sidebar": "#FFF4E6",   
+        "button": "#FF8C00",    
+        "hover": "#FF7000",   
+        "text": "#FFFFFF",
+        "label":  "#000000" 
     },
     "dark": {
-        "sidebar": "#020617",   # near black
-        "button": "#1e293b",
-        "hover": "#334155",
-        "text": "#e5e7eb",
+        "sidebar": "#3A3735",   
+        "button": "#FF8C00",    
+        "hover": "#FF7000",     
+        "text": "#FFF7ED",   
+        "label":  "#F8F8F8"  
     }
 }
 
@@ -92,7 +94,7 @@ class CookBookApp:
             self.sidebar_frame,
             text="🍳 CookBook",
             font=ctk.CTkFont(size=22, weight="bold"),
-            text_color=THEME[self.current_theme]["text"]
+            text_color= "#000000" 
         ).pack(pady=(25, 35))
 
         # Menu items

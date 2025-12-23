@@ -1,7 +1,31 @@
 import sqlite3
-
+from texts import texts
 DATABASE_NAME = 'recipe.db'
 
+CATEGORY_TR_TO_EN = dict(
+    zip(
+        texts["tr"]["category_items"],
+        texts["en"]["category_items"]
+    )
+)
+
+CATEGORY_EN_TO_TR = dict(
+    zip(
+        texts["en"]["category_items"],
+        texts["tr"]["category_items"]
+    )
+)
+
+def category_for_db(category):
+    return CATEGORY_TR_TO_EN.get(category, category)
+
+def category_for_ui(category_en, lang):
+    if lang == "tr":
+        return CATEGORY_EN_TO_TR.get(category_en, category_en)
+    return category_en
+
+
+    #------------
 def setup_database():
     try:
         conn = sqlite3.connect(DATABASE_NAME)
@@ -36,11 +60,12 @@ def get_db_connection():
 def add_recipe(name, category, collection, ingredients, instructions, cooking_time, portion, notes=""):
     conn = get_db_connection()
     cursor = conn.cursor()
+    category_en = category_for_db(category)
     try:
         cursor.execute("""
             INSERT INTO Recipes (name, category, collection, ingredients, instructions, cooking_time, portion, notes)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, (name, category, collection, ingredients, instructions, cooking_time, portion, notes))
+        """, (name, category_en, collection, ingredients, instructions, cooking_time, portion, notes))
         conn.commit()
         return True
     except sqlite3.IntegrityError:
@@ -82,6 +107,14 @@ def get_recipe_category():
     conn.close()
     return [r[0] for r in recipes]
 
+def get_current_recipe_category(name):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT category FROM Recipes WHERE name = ?", (name,))
+    result = cursor.fetchone()
+    conn.close()
+    return result[0] if result else None
+
 def get_recipe_collection():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -110,13 +143,14 @@ def delete_recipe(name):
     
 
 
-def categoryFilter(categoryName):
+def categoryFilter(category):
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT name FROM Recipes WHERE category = ?", (categoryName,))
-    recipes = cursor.fetchall()
+    category_en = category_for_db(category)
+    cursor.execute("SELECT name FROM Recipes WHERE category = ?", (category_en,))
+    data = cursor.fetchall()
     conn.close()
-    return [r[0] for r in recipes]
+    return [r[0] for r in data]
 
 def get_total_recipe_count():
     conn = get_db_connection()
@@ -155,11 +189,12 @@ def get_recipe_by_name(name):
 def update_recipe(old_name, name, category, collection, ingredients, instructions, cooking_time, portion, notes=""):
     conn = get_db_connection()
     cursor = conn.cursor()
+    category_en = category_for_db(category)
     cursor.execute("""
         UPDATE Recipes
         SET name = ?, category = ?, collection = ?, ingredients = ?, instructions = ?, cooking_time = ?, portion = ?, notes = ?
         WHERE name = ?
-    """, (name, category, collection, ingredients, instructions, cooking_time, portion, notes, old_name))
+    """, (name, category_en, collection, ingredients, instructions, cooking_time, portion, notes, old_name))
     conn.commit()
     conn.close()
 

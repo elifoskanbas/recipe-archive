@@ -30,12 +30,7 @@ def show_add_recipe_screen(parent_frame, language):
     name_entry = ctk.CTkEntry(left, width=220)
     name_entry.pack(padx=15, pady=(0, 10))
 
-    categories = list(set(database.get_recipe_category() + [
-        "Barbecue","Beef","Bread","Cake","Casserole","Chicken",
-        "Chocolate","Cookie","Egg","Fish","Lamb","Muffin",
-        "Noodle","Pasta","Pie","Pork","Rice","Salad",
-        "Sandwich","Sauce","Soup","Tart","Vegetable","Vegetarian"
-    ]))
+    categories = texts[lang]["category_items"]
 
     ctk.CTkLabel(left, text=texts[lang]["category_label"]).pack(anchor="w", padx=15, pady=(10, 5))
     category_combo = ctk.CTkComboBox(left, values=categories)
@@ -138,6 +133,10 @@ def show_add_recipe_screen(parent_frame, language):
         container,
         text=texts[lang]["save_button"],
         height=44,
+        corner_radius=12,
+        fg_color="#FF8C00",     
+        hover_color="#FF7000",   
+        text_color="white",
         command=save_recipe
     ).grid(row=2, column=2, sticky="e", pady=20)
 
