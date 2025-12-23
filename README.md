@@ -38,19 +38,19 @@ The project is built with a modular structure:
 ![Dashboard](recipe-archive/assets/image/dashboard.png)
 
 **Adding a New Recipe**  
-![Add Recipe](recipe-archive/assets/image/add%20recipe.png)
+![Add Recipe](recipe-archive/assets/image/add_recipe.png)
 
 **Editing a Recipe**  
-![Edit Recipe](recipe-archive/assets/image/edit%20recipe.png)
+![Edit Recipe](recipe-archive/assets/image/edit_recipe.png)
 
 **Manage Recipes**  
-![Manage Recipes](recipe-archive/assets/image/manage%20recipe.png)
+![Manage Recipes](recipe-archive/assets/image/manage_recipe.png)
 
 **Dual Language Settings**  
-![Dual Language Settings](recipe-archive/assets/image/dual%20lang%20settings.png)
+![Dual Language Settings](recipe-archive/assets/image/dual_lang_settings.png)
 
 **Dark Mode**  
-![Dark Mode](recipe-archive/assets/image/dark%20mode.png)
+![Dark Mode](recipe-archive/assets/image/dark_mode.png)
 
 
 
@@ -76,6 +76,7 @@ python main.py
 | Language       | Python 3.x               |
 | Developer      | Asya Genç & Elif Oskanbaş|
 | Version        | 1.0.0                    |
+
 
 
 
