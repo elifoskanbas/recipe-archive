@@ -162,7 +162,7 @@ def get_total_recipe_count():
 
 
 def get_latest_recipes():
-    """Tüm tarifleri en yeniden en eskiye doğru sıralar"""
+    """Sorts all recipes from newest to oldest."""
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
