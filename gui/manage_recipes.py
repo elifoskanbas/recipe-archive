@@ -1,5 +1,4 @@
 import customtkinter as ctk
-
 import edit_recipe
 import recipe_detail
 import database
@@ -8,48 +7,55 @@ from texts import texts
 
 def recipe_list(list_frame, recipes, parent_frame, language):
     lang = language
-
+    
     for widget in list_frame.winfo_children():
         widget.destroy()
-
+    
     edit_icon = texts[lang]["edit_icon"]
     delete_icon = texts[lang]["delete_icon"]
-
+    
     for recipe in recipes:
-        row = ctk.CTkFrame(list_frame, height=48)
+        row = ctk.CTkFrame(
+            list_frame,
+            height=48,
+            fg_color=("#FFFFFF", "#2B2B2B"),
+            border_width=1,
+            border_color=("#E5E7EB", "#404040")
+        )
         row.pack(fill="x", pady=6)
         row.pack_propagate(False)
-
+        
         # Recipe name (clickable → DETAIL)
         ctk.CTkButton(
             row,
             text=recipe,
             anchor="w",
             fg_color="transparent",
-            hover_color="#e8e8e8",
-            text_color=("black", "white"),
+            hover_color=("#F3F4F6", "#3B3B3B"),
+            text_color=("#000000", "#FFFFFF"),
             command=lambda r=recipe:
                 recipe_detail.show_recipe_screen(parent_frame, r, lang)
         ).pack(side="left", fill="x", expand=True, padx=(15, 5))
-
+        
         # Edit
         ctk.CTkButton(
             row,
             text=edit_icon,
             width=32,
             fg_color="transparent",
-            hover_color="#e0e0e0",
+            hover_color=("#F3F4F6", "#3B3B3B"),
+            text_color=("#FF8C00", "#FFA500"),
             command=lambda r=recipe:
                 edit_recipe.show_edit_recipe_screen(parent_frame, r, lang)
         ).pack(side="right", padx=(0, 5))
-
+        
         # Delete
         ctk.CTkButton(
             row,
             text=delete_icon,
             width=32,
             fg_color="transparent",
-            hover_color="#f8d7da",
+            hover_color=("#FEE2E2", "#4B2B2B"),
             text_color="#dc3545",
             command=lambda r=recipe:
                 delete_recipe(r, parent_frame, list_frame, lang)
@@ -67,52 +73,67 @@ def apply_filter(list_frame, category, parent_frame, language):
         recipes = database.categoryFilter(category)
     else:
         recipes = database.get_recipe_names()
-
     recipe_list(list_frame, recipes, parent_frame, language)
 
 
 def show_manage_recipe_screen(parent_frame, language):
     lang = language
-
     
     for widget in parent_frame.winfo_children():
         widget.destroy()
-
-    container = ctk.CTkFrame(parent_frame)
+    
+    container = ctk.CTkFrame(
+        parent_frame,
+        fg_color="transparent"
+    )
     container.pack(fill="both", expand=True, padx=30, pady=30)
-
+    
     # Header
     ctk.CTkLabel(
         container,
         text=texts[lang]["manage_recipes_title"],
-        font=ctk.CTkFont(size=22, weight="bold")
+        font=ctk.CTkFont(size=22, weight="bold"),
+        text_color=("#1F2937", "#FFFFFF")
     ).pack(anchor="w", pady=(0, 20))
-
+    
     # Category filter
     categories = texts[lang]["category_items"]
-
+    
     ctk.CTkLabel(
         container,
-        text=texts[lang]["category_label"]
+        text=texts[lang]["category_label"],
+        text_color=("#1F2937", "#FFFFFF")
     ).pack(anchor="w")
-
+    
     selected_category = ctk.StringVar(value="")
+    
     category_combo = ctk.CTkComboBox(
         container,
         values=categories,
         variable=selected_category,
-        width=220
+        width=220,
+        fg_color=("#FFFFFF", "#2B2B2B"),
+        button_color="#FF8C00",
+        button_hover_color="#FF7000",
+        text_color=("#000000", "#FFFFFF"),
+        border_color=("#E5E7EB", "#404040"),
+        dropdown_fg_color=("#FFFFFF", "#2B2B2B"),
+        dropdown_text_color=("#000000", "#FFFFFF"),
+        dropdown_hover_color=("#F3F4F6", "#3B3B3B")
     )
     category_combo.pack(anchor="w", pady=(5, 20))
-
+    
     # Scrollable list
-    list_frame = ctk.CTkScrollableFrame(container)
+    list_frame = ctk.CTkScrollableFrame(
+        container,
+        fg_color="transparent"
+    )
     list_frame.pack(fill="both", expand=True)
-
+    
     category_combo.configure(
         command=lambda value:
             apply_filter(list_frame, value, parent_frame, lang)
     )
-
+    
     recipes = database.get_recipe_names()
     recipe_list(list_frame, recipes, parent_frame, lang)
