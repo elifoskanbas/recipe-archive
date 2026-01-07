@@ -28,21 +28,25 @@ def show_recipe_screen(parent_frame, recipe_name, language="en"):
         notes
     ) = recipe
 
-    container = ctk.CTkFrame(parent_frame)
+    container = ctk.CTkFrame(
+        parent_frame,
+        fg_color="transparent"
+    )
     container.pack(fill="both", expand=True, padx=30, pady=30)
 
-    # -------------------------
+
     # HEADER
-    # -------------------------
+
     ctk.CTkLabel(
         container,
         text=name,
-        font=ctk.CTkFont(size=26, weight="bold")
+        font=ctk.CTkFont(size=26, weight="bold"),
+        text_color=("#1F2937", "#FFFFFF")
     ).pack(anchor="w", pady=(0, 20))
 
-    # -------------------------
+   
     # INFO ROW
-    # -------------------------
+   
     info_row = ctk.CTkFrame(container, fg_color="transparent")
     info_row.pack(fill="x", pady=(0, 30))
 
@@ -54,45 +58,66 @@ def show_recipe_screen(parent_frame, recipe_name, language="en"):
         f"{cooking_time // 60}h {cooking_time % 60}m"
     ).pack(side="left", padx=5)
 
-    # -------------------------
+   
     # CONTENT
-    # -------------------------
-    content = ctk.CTkFrame(container)
+   
+    content = ctk.CTkFrame(container, fg_color="transparent")
     content.pack(fill="both", expand=True)
 
     # Ingredients
-    left = ctk.CTkFrame(content)
+    left = ctk.CTkFrame(
+        content,
+        fg_color=("#FFFFFF", "#404040")
+    )
     left.pack(side="left", fill="both", expand=True, padx=(0, 10))
 
     ctk.CTkLabel(
         left,
         text=texts[lang]["ingredients_label"],
-        font=ctk.CTkFont(size=18, weight="bold")
+        font=ctk.CTkFont(size=18, weight="bold"),
+        text_color=("#1F2937", "#FFFFFF")
     ).pack(anchor="w", padx=15, pady=(15, 5))
 
-    ingredients_box = ctk.CTkTextbox(left)
+
+    ingredients_box = ctk.CTkTextbox(
+        left,
+        fg_color=("#FFFFFF", "#404040"),
+        text_color=("#000000", "#FFFFFF"),
+        border_width=1,
+        border_color=("#E5E7EB", "#404040")
+    )
     ingredients_box.insert("1.0", ingredients)
     ingredients_box.configure(state="disabled")
     ingredients_box.pack(fill="both", expand=True, padx=15, pady=10)
 
     # Directions
-    right = ctk.CTkFrame(content)
+    right = ctk.CTkFrame(
+        content,
+        fg_color=("#FFFFFF", "#404040")
+    )
     right.pack(side="left", fill="both", expand=True, padx=(10, 0))
 
     ctk.CTkLabel(
         right,
         text=texts[lang]["directions_label"],
-        font=ctk.CTkFont(size=18, weight="bold")
+        font=ctk.CTkFont(size=18, weight="bold"),
+        text_color=("#1F2937", "#FFFFFF")
     ).pack(anchor="w", padx=15, pady=(15, 5))
 
-    directions_box = ctk.CTkTextbox(right)
+    directions_box = ctk.CTkTextbox(
+        right,
+        fg_color=("#FFFFFF", "#404040"),
+        text_color=("#000000", "#FFFFFF"),
+        border_width=1,
+        border_color=("#E5E7EB", "#404040")
+    )
     directions_box.insert("1.0", instructions)
     directions_box.configure(state="disabled")
     directions_box.pack(fill="both", expand=True, padx=15, pady=10)
 
-    # -------------------------
+  
     # ACTIONS
-    # -------------------------
+    
     actions = ctk.CTkFrame(container, fg_color="transparent")
     actions.pack(fill="x", pady=20)
 
@@ -124,7 +149,8 @@ def info_chip(parent, label, value, icon=""):
         parent,
         width=180,
         height=90,
-        corner_radius=14
+        corner_radius=14,
+        fg_color=("#FFFFFF", "#404040")
     )
     card.pack_propagate(False)
 
@@ -135,20 +161,22 @@ def info_chip(parent, label, value, icon=""):
         ctk.CTkLabel(
             inner,
             text=icon,
-            font=ctk.CTkFont(size=20)
+            font=ctk.CTkFont(size=20),
+            text_color=("#1F2937", "#FFFFFF")
         ).pack(anchor="w")
 
     ctk.CTkLabel(
         inner,
         text=label,
-        font=ctk.CTkFont(size=12)
+        font=ctk.CTkFont(size=12),
+        text_color=("#6B7280", "#9CA3AF")
     ).pack(anchor="w", pady=(2, 0))
 
     ctk.CTkLabel(
         inner,
         text=str(value),
-        font=ctk.CTkFont(size=18, weight="bold")
+        font=ctk.CTkFont(size=18, weight="bold"),
+        text_color=("#1F2937", "#FFFFFF")
     ).pack(anchor="w")
 
     return card
-

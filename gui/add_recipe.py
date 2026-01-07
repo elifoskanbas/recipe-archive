@@ -5,26 +5,42 @@ import database
 from texts import texts
 
 
+CARD_FG = ("#FFF8F0", "#2B2B2B")
+CARD_BORDER = ("#E0D6C8", "#3A3A3A")
+
+
 def show_add_recipe_screen(parent_frame, language):
     lang = language
 
-    # EKRANI TEMİZLE
+    # Clear frame
     for widget in parent_frame.winfo_children():
         widget.destroy()
 
-    container = ctk.CTkFrame(parent_frame)
+    container = ctk.CTkFrame(
+        parent_frame,
+        fg_color=CARD_FG
+    )
     container.pack(fill="both", expand=True, padx=30, pady=30)
+
 
     # TITLE
     ctk.CTkLabel(
         container,
         text=texts[lang]["new_recipe_title"],
-        font=ctk.CTkFont(size=22, weight="bold")
+        font=ctk.CTkFont(size=22, weight="bold"),
+        fg_color=CARD_FG
     ).grid(row=0, column=0, columnspan=3, sticky="w", pady=(0, 20))
 
     # ---------- LEFT CARD ----------
-    left = ctk.CTkFrame(container)
+    left = ctk.CTkFrame(
+    container,
+        fg_color=CARD_FG,
+        border_color=CARD_BORDER,
+        border_width=1,
+        corner_radius=16
+    )
     left.grid(row=1, column=0, sticky="nsew", padx=10)
+
 
     ctk.CTkLabel(left, text=texts[lang]["name_label"]).pack(anchor="w", padx=15, pady=(15, 5))
     name_entry = ctk.CTkEntry(left, width=220)
@@ -59,8 +75,15 @@ def show_add_recipe_screen(parent_frame, language):
     ctk.CTkEntry(time_row, textvariable=minutes_var, width=50).pack(side="left")
 
     # ---------- INGREDIENTS ----------
-    ingredients = ctk.CTkFrame(container)
+    ingredients = ctk.CTkFrame(
+        container,
+        fg_color=CARD_FG,
+        border_color=CARD_BORDER,
+        border_width=1,
+        corner_radius=16
+    )
     ingredients.grid(row=1, column=1, sticky="nsew", padx=10)
+
 
     ctk.CTkLabel(
         ingredients,
@@ -68,12 +91,25 @@ def show_add_recipe_screen(parent_frame, language):
         font=ctk.CTkFont(weight="bold")
     ).pack(anchor="w", padx=15, pady=(15, 5))
 
-    ingredients_text = ctk.CTkTextbox(ingredients)
+    ingredients_text = ctk.CTkTextbox(
+        ingredients,
+        fg_color=CARD_FG,
+        text_color=("#2B2B2B", "#F5F5F5"),
+        corner_radius=10
+     )
     ingredients_text.pack(fill="both", expand=True, padx=15, pady=10)
 
+
     # ---------- DIRECTIONS ----------
-    directions = ctk.CTkFrame(container)
+    directions = ctk.CTkFrame(
+        container,
+        fg_color=CARD_FG,
+        border_color=CARD_BORDER,
+        border_width=1,
+        corner_radius=16
+    )
     directions.grid(row=1, column=2, sticky="nsew", padx=10)
+
 
     ctk.CTkLabel(
         directions,
@@ -81,8 +117,14 @@ def show_add_recipe_screen(parent_frame, language):
         font=ctk.CTkFont(weight="bold")
     ).pack(anchor="w", padx=15, pady=(15, 5))
 
-    directions_text = ctk.CTkTextbox(directions)
+    directions_text = ctk.CTkTextbox(
+        directions,
+        fg_color=CARD_FG,
+        text_color=("#2B2B2B", "#F5F5F5"),
+        corner_radius=10
+    )
     directions_text.pack(fill="both", expand=True, padx=15, pady=10)
+
 
     # ---------- SAVE ----------
     def save_recipe():

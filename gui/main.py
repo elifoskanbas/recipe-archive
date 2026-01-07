@@ -9,64 +9,35 @@ from texts import texts
 import database
 
 
-# -----------------------------
-# THEME CONFIG
-# -----------------------------
-THEME = {
-    "light": {
-        "sidebar": "#FFF4E6",   
-        "button": "#FF8C00",    
-        "hover": "#FF7000",   
-        "text": "#FFFFFF",
-        "label":  "#000000" 
-    },
-    "dark": {
-        "sidebar": "#3A3735",   
-        "button": "#FF8C00",    
-        "hover": "#FF7000",     
-        "text": "#FFF7ED",   
-        "label":  "#F8F8F8"  
-    }
-}
-
-
-# -----------------------------
 # APP
-# -----------------------------
+
 class CookBookApp:
     def __init__(self, root):
         self.root = root
         self.root.title("CookBook")
         self.root.geometry("1200x650")
 
-        # Language
-        self.current_lang = settings.get_lang()
 
-        # CustomTkinter base setup
+        self.current_lang = settings.get_lang()
         ctk.set_appearance_mode("light")
         ctk.set_default_color_theme("dark-blue")
-
         self.current_theme = "light"
-
-        # DB init
         database.setup_database()
-
-        # UI
         self.create_ui()
 
         # First screen
         self.show_dashboard()
 
-    # -----------------------------
+
     # UI SETUP
-    # -----------------------------
+ 
     def create_ui(self):
         # Sidebar
         self.sidebar_frame = ctk.CTkFrame(
             self.root,
             width=220,
             corner_radius=0,
-            fg_color=THEME[self.current_theme]["sidebar"]
+            fg_color=("#FFF4E6", "#2B2B2B")  # (light_mode_color, dark_mode_color)
         )
         self.sidebar_frame.pack(side="left", fill="y")
         self.sidebar_frame.pack_propagate(False)
@@ -75,15 +46,15 @@ class CookBookApp:
         self.main_content_frame = ctk.CTkFrame(
             self.root,
             corner_radius=0,
-            fg_color="transparent"
+            fg_color=("#FFF8F0", "#2B2B2B")
         )
         self.main_content_frame.pack(side="right", fill="both", expand=True)
 
         self.create_menu_buttons()
 
-    # -----------------------------
+
     # SIDEBAR
-    # -----------------------------
+  
     def create_menu_buttons(self):
         # Clear sidebar
         for widget in self.sidebar_frame.winfo_children():
@@ -93,8 +64,7 @@ class CookBookApp:
         ctk.CTkLabel(
             self.sidebar_frame,
             text="🍳 CookBook",
-            font=ctk.CTkFont(size=22, weight="bold"),
-            text_color= "#000000" 
+            font=ctk.CTkFont(size=22, weight="bold")
         ).pack(pady=(25, 35))
 
         # Menu items
@@ -114,9 +84,9 @@ class CookBookApp:
                 height=42,
                 corner_radius=10,
                 font=ctk.CTkFont(size=14),
-                fg_color=THEME[self.current_theme]["button"],
-                hover_color=THEME[self.current_theme]["hover"],
-                text_color=THEME[self.current_theme]["text"]
+                fg_color="#FF8C00",
+                hover_color="#FF7000",
+                text_color="#FFFFFF"
             )
             btn.pack(fill="x", padx=18, pady=6)
 
@@ -128,7 +98,6 @@ class CookBookApp:
         ).pack(fill="x", padx=18, pady=20)
 
         # Theme toggle
-       
         ctk.CTkButton(
             self.sidebar_frame,
             text=texts[self.current_lang]["theme_label"],
@@ -136,14 +105,14 @@ class CookBookApp:
             height=42,
             corner_radius=10,
             font=ctk.CTkFont(size=14),
-            fg_color=THEME[self.current_theme]["button"],
-            hover_color=THEME[self.current_theme]["hover"],
-            text_color=THEME[self.current_theme]["text"]
+            fg_color="#FF8C00",
+            hover_color="#FF7000",
+            text_color="#FFFFFF"
         ).pack(fill="x", padx=18, pady=6)
 
-    # -----------------------------
+
     # NAVIGATION
-    # -----------------------------
+   
     def menu_click(self, action):
         for widget in self.main_content_frame.winfo_children():
             widget.destroy()
@@ -157,9 +126,9 @@ class CookBookApp:
         elif action == "Settings":
             self.show_settings()
 
-    # -----------------------------
+   
     # SCREENS
-    # -----------------------------
+   
     def show_dashboard(self):
         dashboard.show_dashboard(self.main_content_frame, self.current_lang)
 
@@ -176,17 +145,17 @@ class CookBookApp:
             on_language_change=self.on_language_change
         )
 
-    # -----------------------------
+   
     # LANGUAGE
-    # -----------------------------
+    
     def on_language_change(self, new_lang):
         self.current_lang = new_lang
         self.create_menu_buttons()
         self.show_dashboard()
 
-    # -----------------------------
+   
     # THEME
-    # -----------------------------
+
     def toggle_theme(self):
         if self.current_theme == "light":
             self.current_theme = "dark"
@@ -195,22 +164,9 @@ class CookBookApp:
             self.current_theme = "light"
             ctk.set_appearance_mode("light")
 
-        theme = THEME[self.current_theme]
 
-        self.sidebar_frame.configure(fg_color=theme["sidebar"])
-
-        for widget in self.sidebar_frame.winfo_children():
-            if isinstance(widget, ctk.CTkButton):
-                widget.configure(
-                    fg_color=theme["button"],
-                    hover_color=theme["hover"],
-                    text_color=theme["text"]
-                )
-
-
-# -----------------------------
 # RUN
-# -----------------------------
+
 if __name__ == "__main__":
     root = ctk.CTk()
     app = CookBookApp(root)

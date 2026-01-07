@@ -4,19 +4,35 @@ import recipe_detail
 from texts import texts
 
 def stat_card(parent, title, value):
-    card = ctk.CTkFrame(parent, width=200, height=100)
+    card = ctk.CTkFrame(
+        parent,
+        width=200,
+        height=100,
+        fg_color=("#FFF4E6", "#2B2B2B"),     # light / dark bg
+        border_color=("#E0D6C8", "#3A3A3A"), # light / dark border
+        border_width=1,
+        corner_radius=16
+    )
     card.pack_propagate(False)
+
     ctk.CTkLabel(
         card,
         text=title,
-        font=ctk.CTkFont(size=14, weight="bold")
+        font=ctk.CTkFont(size=14, weight="bold"),
+        text_color=("#2B2B2B", "#F5F5F5")  
     ).pack(anchor="w", padx=15, pady=(15, 5))
+
     ctk.CTkLabel(
         card,
         text=str(value),
-        font=ctk.CTkFont(size=22, weight="bold")
+        font=ctk.CTkFont(size=28, weight="bold"),
+        text_color=("#2B2B2B", "#FFFFFF")   
     ).pack(anchor="w", padx=15)
+
     return card
+
+
+
 
 def show_dashboard(parent_frame, language):
     lang = language
