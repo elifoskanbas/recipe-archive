@@ -27,6 +27,8 @@ def show_recipe_screen(parent_frame, recipe_name, language="en"):
         portion,
         notes
     ) = recipe
+    
+    category_display = database.category_for_ui(category, lang)
 
     container = ctk.CTkFrame(
         parent_frame,
@@ -50,7 +52,7 @@ def show_recipe_screen(parent_frame, recipe_name, language="en"):
     info_row = ctk.CTkFrame(container, fg_color="transparent")
     info_row.pack(fill="x", pady=(0, 30))
 
-    info_chip(info_row, texts[lang]["category_label"], category).pack(side="left", padx=5)
+    info_chip(info_row, texts[lang]["category_label"], category_display).pack(side="left", padx=5)
     info_chip(info_row, texts[lang]["portion_label"], portion).pack(side="left", padx=5)
     info_chip(
         info_row,
